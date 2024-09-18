@@ -2,7 +2,7 @@
 name = "homework14-1"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Nastya Sol <an5oldatova@ya.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

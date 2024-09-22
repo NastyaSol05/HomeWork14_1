@@ -20,7 +20,7 @@ class Category:
 
     def add_product(self, product1: Product) -> Any:
         Category.product_count += 1
-        return self.__products.append(product1)
+        self.__products.append(product1)
 
     @property
     def products(self) -> str:

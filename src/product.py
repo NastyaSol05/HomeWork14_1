@@ -15,18 +15,18 @@ class Product:
     def count_products(self) -> int:
         return self.product_count
 
-    @staticmethod
-    def new_product(products_dict: dict) -> Any:
-        for i in Product.all_products:
+    @classmethod
+    def new_product(cls, products_dict: dict) -> Any:
+        for i in cls.all_products:
             if i.name == products_dict["name"]:
                 i.quantity += products_dict["quantity"]
                 if i.__price <= products_dict["price"]:
                     i.__price = products_dict["price"]
                     return i
-        new_product = Product(
+        new_product = cls(
             products_dict["name"], products_dict["description"], products_dict["price"], products_dict["quantity"]
         )
-        Product.all_products.append(new_product)
+        cls.all_products.append(new_product)
         return new_product
 
     @property

@@ -36,3 +36,21 @@ def test_new_products(products: Any) -> None:
 def test_price(products: Any) -> None:
     products.price = -100
     assert products.price == 180000.0
+
+
+@pytest.fixture
+def add_products() -> Any:
+    product1 = Product.new_product(
+        {
+            "name": "Samsung Galaxy S23 Ultra",
+            "description": "256GB, Серый цвет, 200MP камера",
+            "price": 1.0,
+            "quantity": 5,
+        }
+    )
+    product2 = Product("Iphone 15", "512GB, Gray space", 1.0, 8)
+    return product1 + product2
+
+
+def test_add(add_products: dict) -> None:
+    assert add_products == 13.0

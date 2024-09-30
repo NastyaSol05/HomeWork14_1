@@ -26,7 +26,7 @@ class Category:
         """Метод, для подсчета категорий"""
         return self.category_count
 
-    def add_product(self, product: Product) -> Any:
+    def add_product(self, product: Any) -> Any:
         """Метод, который добавляет продукты в категорию"""
         if not issubclass(type(product), Product):
             raise TypeError

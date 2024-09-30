@@ -4,7 +4,7 @@ from src.product import Product
 
 
 class Category:
-    """ Класс с категориями"""
+    """Класс с категориями"""
 
     category_count = 0
     product_count = 0
@@ -23,21 +23,23 @@ class Category:
         return f"{self.name}, количество продуктов: {summ} шт."
 
     def count_category(self) -> int:
-        """ Метод, для подсчета категорий"""
+        """Метод, для подсчета категорий"""
         return self.category_count
 
-    def add_product(self, product1: Product) -> Any:
-        """ Метод, который добавляет продукты в список"""
+    def add_product(self, product: Product) -> Any:
+        """Метод, который добавляет продукты в категорию"""
+        if not issubclass(type(product), Product):
+            raise TypeError
         Category.product_count += 1
-        self.__products.append(product1)
+        self.__products.append(product)
 
     def products_in_list(self) -> list:
-        """ Метод, который возвращает список продуктов"""
+        """Метод, который возвращает список продуктов"""
         return self.__products
 
     @property
     def products(self) -> str:
-        """ Геттер, который возвразает продукты в формате "Имя продукта, количество продуктов: n шт." """
+        """Геттер, который возвразает продукты в формате "Имя продукта, количество продуктов: n шт." """
         new_products = ""
         for i in self.__products:
             new_products += f"{str(i)}\n"

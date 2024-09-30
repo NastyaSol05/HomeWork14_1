@@ -6,7 +6,7 @@ from src.product import Product
 
 
 def read_json(path: str) -> list:
-    """ Функция, которая открывает json file и создает список продуктов """
+    """Функция, которая открывает json file и создает список продуктов"""
     with open(path, "r") as f:
         data = json.load(f)
         all_category = []

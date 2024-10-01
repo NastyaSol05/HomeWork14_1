@@ -7,6 +7,7 @@ from src.product import Product
 
 @pytest.fixture
 def count_products() -> Product:
+    Product.product_count = 0
     return Product("Banana", "Very tasty", 20, 200)
 
 

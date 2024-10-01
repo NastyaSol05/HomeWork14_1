@@ -23,6 +23,6 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other: Any) -> Any:
-        if isinstance(other, Smartphone):
+        if issubclass(type(other), Smartphone):
             return self.quantity + other.quantity
         raise TypeError

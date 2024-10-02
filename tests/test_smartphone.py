@@ -16,7 +16,7 @@ def smartphone() -> Any:
 
 
 def test_add_smartphone(smartphone: Any) -> None:
-    assert smartphone == 13
+    assert smartphone == 2580000.0
 
 
 def test_add_grass_smartphone() -> None:

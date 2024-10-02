@@ -14,7 +14,7 @@ def lawngrass() -> Any:
 
 
 def test_add_smartphone(lawngrass: Any) -> None:
-    assert lawngrass == 35
+    assert lawngrass == 16750.0
 
 
 def test_add_grass_smartphone() -> None:

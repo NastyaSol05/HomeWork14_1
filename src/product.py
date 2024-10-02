@@ -18,7 +18,11 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: Any) -> Any:
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if issubclass(type(other), type(self)):
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
+        else:
+            raise TypeError
+
 
     def count_products(self) -> int:
         """Метод, который считает количество продуктов"""

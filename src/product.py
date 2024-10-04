@@ -1,7 +1,10 @@
 from typing import Any
 
+from src.baseproduct import BaseProduct
+from src.mixinprint import Mixinprint
 
-class Product:
+
+class Product(BaseProduct, Mixinprint):
     """Класс с продуктами"""
 
     all_products: list = []
@@ -13,6 +16,7 @@ class Product:
         self.__price = price
         self.quantity = quantity
         Product.product_count += 1
+        super().__init__()
 
     def __str__(self) -> str:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -22,7 +26,6 @@ class Product:
             return (self.__price * self.quantity) + (other.__price * other.quantity)
         else:
             raise TypeError
-
 
     def count_products(self) -> int:
         """Метод, который считает количество продуктов"""

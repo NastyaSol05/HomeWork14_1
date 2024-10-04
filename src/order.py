@@ -1,7 +1,8 @@
+from src.basecategory import BaseCategory
 from src.product import Product
 
 
-class Order:
+class Order(BaseCategory):
 
     total: float
 

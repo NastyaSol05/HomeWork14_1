@@ -1,6 +1,7 @@
 from typing import Any
 
 from src.basecategory import BaseCategory
+from src.exceptions import ZeroQuantityProduct
 from src.product import Product
 
 
@@ -29,10 +30,18 @@ class Category(BaseCategory):
 
     def add_product(self, product: Any) -> Any:
         """Метод, который добавляет продукты в категорию"""
-        if not issubclass(type(product), Product):
-            raise TypeError
-        Category.product_count += 1
-        self.__products.append(product)
+        if isinstance(product, Product):
+            try:
+                if product.quantity == 0:
+                    raise ZeroQuantityProduct("Товар с нулевым количеством не может быть добавлен.")
+            except ZeroQuantityProduct as e:
+                print(str(e))
+            else:
+                self.__products.append(product)
+                Category.product_count += 1
+                print("Продукт был успешно добавлен.")
+            finally:
+                print("Обработка добавления товара завершена.")
 
     def products_in_list(self) -> list:
         """Метод, который возвращает список продуктов"""
@@ -45,3 +54,9 @@ class Category(BaseCategory):
         for i in self.__products:
             new_products += f"{str(i)}\n"
         return new_products
+
+    def middle_price(self) -> float:
+        try:
+            return float(sum([product.price for product in self.products_in_list()]) / len(self.products_in_list()))
+        except ZeroDivisionError:
+            return 0

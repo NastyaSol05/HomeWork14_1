@@ -14,7 +14,11 @@ class Product(BaseProduct, Mixinprint):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            print("Товар с нулевым количеством не может быть добавлен")
+            raise ValueError
         Product.product_count += 1
         super().__init__()
 
